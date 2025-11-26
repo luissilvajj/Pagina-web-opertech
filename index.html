@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OPERTECH LLC | Industrial & Commercial HVAC Solutions</title>
-    <meta name="description" content="Líderes en ejecución HVAC comercial e industrial en USA. Integridad, precisión técnica y alcance multi-estatal.">
-    
+    <meta name="description"
+        content="Líderes en ejecución HVAC comercial e industrial en USA. Integridad, precisión técnica y alcance multi-estatal.">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- jQuery (required for jVectorMap) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
+
     <!-- jVectorMap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jvectormap@2.0.4/jquery-jvectormap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jvectormap@2.0.4/jquery-jvectormap.min.js"></script>
@@ -32,11 +36,27 @@
             --color-dark-gray: #1f2937;
         }
 
-        html { scroll-behavior: smooth; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
-        body { font-family: 'Open Sans', sans-serif; }
-        .lang-hidden { display: none; }
-        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .lang-hidden {
+            display: none;
+        }
+
         /* Gallery Cards */
         .project-card {
             background-color: #ffffff;
@@ -49,11 +69,13 @@
             border: 1px solid #e5e7eb;
             transition: all 0.4s ease;
         }
+
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
             border-color: var(--color-blue);
         }
+
         .project-card::before {
             content: '';
             position: absolute;
@@ -65,16 +87,22 @@
             opacity: 0;
             transition: 0.3s;
         }
-        .project-card:hover::before { opacity: 1; }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
         .project-card i {
             font-size: 2.5rem;
             color: #9ca3af;
             transition: 0.3s;
         }
+
         .project-card:hover i {
             color: var(--color-black);
             transform: scale(1.1);
         }
+
         .project-overlay {
             position: absolute;
             bottom: 0;
@@ -85,37 +113,51 @@
             opacity: 0;
             transition: 0.3s;
         }
-        .project-card:hover .project-overlay { opacity: 1; }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
 
         /* State Selector */
         .state-btn {
             transition: all 0.3s;
         }
+
         .state-btn.active {
             background-color: var(--color-black);
             color: white;
             border-left: 4px solid var(--color-red);
             padding-left: 1.5rem;
         }
-        .state-btn.active h4 { color: #ffffff; }
+
+        .state-btn.active h4 {
+            color: #ffffff;
+        }
 
         /* Hero */
         .hero-bg {
             background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(30, 30, 30, 0.85) 100%);
         }
-        
+
         .animate-spin-slow {
             animation: spin 12s linear infinite;
         }
+
         @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Service Cards */
         .service-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .service-card:hover {
             transform: translateY(-8px);
         }
@@ -125,6 +167,7 @@
             width: 100%;
             height: 400px;
         }
+
         .jvectormap-tip {
             background: #0f0f0f !important;
             border: 1px solid #2563eb !important;
@@ -132,71 +175,74 @@
             padding: 8px 12px !important;
             font-family: 'Open Sans', sans-serif !important;
         }
-        
+
         /* Map marker styles */
         .jvectormap-marker {
             cursor: pointer;
         }
     </style>
 </head>
+
 <body class="text-slate-700 bg-white antialiased">
 
     <!-- Navbar -->
     <nav class="bg-white fixed w-full z-50 shadow-md border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-24 items-center">
-                
+
                 <!-- LOGO -->
                 <div class="flex items-center gap-3">
-                    <div class="hidden sm:flex items-baseline font-montserrat font-black text-4xl tracking-tighter leading-none select-none">
-                        <span class="text-black relative">
-                            O
-                            <span class="absolute inset-0 flex items-center justify-center">
-                                <span class="w-3 h-3 bg-red-600 rounded-full translate-y-[1px]"></span>
-                            </span>
-                        </span>
-                        <span class="text-black relative">
-                            P
-                            <span class="absolute right-[0.15em] top-[0.35em] w-[0.15em] h-[0.25em] bg-blue-600 rounded-sm"></span>
-                        </span>
-                        <span class="text-black">T</span>
-                    </div>
-                    
-                    <div class="flex flex-col justify-center ml-2">
-                        <span class="font-montserrat text-xl font-bold tracking-tight text-red-600 leading-none">OPERTECH</span>
-                        <span class="block text-xs font-bold text-blue-600 tracking-wider leading-none mt-1">LLC HVAC</span>
-                    </div>
+                    <!-- REEMPLAZAR: assets/images/logo.png -->
+                    <!-- Instrucción para el usuario: Reemplace el src con la ruta de su logo real -->
+                    <img src="https://placehold.co/200x60/transparent/000000?text=OPERTECH+LOGO" alt="OPERTECH LLC Logo"
+                        class="h-12 w-auto object-contain">
                 </div>
 
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex space-x-8 items-center">
-                    <a href="#home" class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-es">Inicio</a>
-                    <a href="#home" class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-en lang-hidden">Home</a>
+                    <a href="#home"
+                        class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-es">Inicio</a>
+                    <a href="#home"
+                        class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-en lang-hidden">Home</a>
 
-                    <a href="#about" class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-es">Nosotros</a>
-                    <a href="#about" class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-en lang-hidden">About</a>
+                    <a href="#about"
+                        class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-es">Nosotros</a>
+                    <a href="#about"
+                        class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-en lang-hidden">About</a>
 
-                    <a href="#services" class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-es">Servicios</a>
-                    <a href="#services" class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-en lang-hidden">Services</a>
+                    <a href="#services"
+                        class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-es">Servicios</a>
+                    <a href="#services"
+                        class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-en lang-hidden">Services</a>
 
-                    <a href="#map" class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-es">Cobertura</a>
-                    <a href="#map" class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-en lang-hidden">Coverage</a>
+                    <a href="#map"
+                        class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-es">Cobertura</a>
+                    <a href="#map"
+                        class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-en lang-hidden">Coverage</a>
 
-                    <a href="#projects" class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-es">Proyectos</a>
-                    <a href="#projects" class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-en lang-hidden">Projects</a>
+                    <a href="#projects"
+                        class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-es">Proyectos</a>
+                    <a href="#projects"
+                        class="text-sm font-bold text-slate-700 hover:text-red-600 transition uppercase tracking-wide lang-en lang-hidden">Projects</a>
 
-                    <a href="#contact" class="bg-black hover:bg-gray-800 text-white px-5 py-2.5 rounded-sm font-bold transition duration-300 border-b-4 border-red-600 hover:border-blue-600 text-xs uppercase tracking-wider shadow-lg lang-es">
+                    <a href="#contact"
+                        class="bg-black hover:bg-gray-800 text-white px-5 py-2.5 rounded-sm font-bold transition duration-300 border-b-4 border-red-600 hover:border-blue-600 text-xs uppercase tracking-wider shadow-lg lang-es">
                         Solicitar Propuesta
                     </a>
-                    <a href="#contact" class="bg-black hover:bg-gray-800 text-white px-5 py-2.5 rounded-sm font-bold transition duration-300 border-b-4 border-red-600 hover:border-blue-600 text-xs uppercase tracking-wider shadow-lg lang-en lang-hidden">
+                    <a href="#contact"
+                        class="bg-black hover:bg-gray-800 text-white px-5 py-2.5 rounded-sm font-bold transition duration-300 border-b-4 border-red-600 hover:border-blue-600 text-xs uppercase tracking-wider shadow-lg lang-en lang-hidden">
                         Request Quote
                     </a>
-                    
+
                     <div class="flex items-center border-l-2 border-slate-100 pl-4 ml-2 gap-3">
-                        <button onclick="switchLanguage('es')" class="hover:scale-110 transition opacity-70 hover:opacity-100 grayscale hover:grayscale-0" title="Español">
+                        <button onclick="switchLanguage('es')"
+                            class="hover:scale-110 transition opacity-70 hover:opacity-100 grayscale hover:grayscale-0"
+                            title="Español">
                             <span class="text-xl">🇪🇸</span>
                         </button>
-                        <button onclick="switchLanguage('en')" class="hover:scale-110 transition opacity-70 hover:opacity-100 grayscale hover:grayscale-0" title="English">
+                        <button onclick="switchLanguage('en')"
+                            class="hover:scale-110 transition opacity-70 hover:opacity-100 grayscale hover:grayscale-0"
+                            title="English">
                             <span class="text-xl">🇺🇸</span>
                         </button>
                     </div>
@@ -206,17 +252,23 @@
                 <div class="lg:hidden flex items-center gap-4">
                     <button onclick="switchLanguage('es')">🇪🇸</button>
                     <button onclick="switchLanguage('en')">🇺🇸</button>
-                    <button onclick="toggleMobileMenu()" class="text-2xl text-black"><i class="fas fa-bars"></i></button>
+                    <button onclick="toggleMobileMenu()" class="text-2xl text-black"><i
+                            class="fas fa-bars"></i></button>
                 </div>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200 shadow-xl absolute w-full left-0">
+        <div id="mobile-menu"
+            class="hidden lg:hidden bg-white border-t border-gray-200 shadow-xl absolute w-full left-0">
             <div class="px-4 pt-4 pb-6 space-y-2">
-                <a href="#home" class="block py-3 text-slate-800 font-bold border-b border-gray-100 hover:text-red-600">Home</a>
-                <a href="#about" class="block py-3 text-slate-800 font-bold border-b border-gray-100 hover:text-red-600">About</a>
-                <a href="#services" class="block py-3 text-slate-800 font-bold border-b border-gray-100 hover:text-red-600">Services</a>
-                <a href="#projects" class="block py-3 text-slate-800 font-bold border-b border-gray-100 hover:text-red-600">Projects</a>
+                <a href="#home"
+                    class="block py-3 text-slate-800 font-bold border-b border-gray-100 hover:text-red-600">Home</a>
+                <a href="#about"
+                    class="block py-3 text-slate-800 font-bold border-b border-gray-100 hover:text-red-600">About</a>
+                <a href="#services"
+                    class="block py-3 text-slate-800 font-bold border-b border-gray-100 hover:text-red-600">Services</a>
+                <a href="#projects"
+                    class="block py-3 text-slate-800 font-bold border-b border-gray-100 hover:text-red-600">Projects</a>
                 <a href="#contact" class="block py-3 text-red-600 font-black uppercase">Contact Us</a>
             </div>
         </div>
@@ -225,62 +277,97 @@
     <!-- Hero Section -->
     <header id="home" class="relative h-screen flex items-center bg-black">
         <div class="absolute inset-0 z-0">
-            <!-- REEMPLAZAR: assets/images/hero/hero-bg.jpg -->
-            <div class="w-full h-full opacity-40 bg-[url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center"></div>
+            <div
+                class="w-full h-full opacity-40 bg-[url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center">
+            </div>
             <div class="absolute inset-0 hero-bg"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
                         <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
                         <span class="lang-es">Precisión & Potencia</span>
                         <span class="lang-en lang-hidden">Precision & Power</span>
                     </div>
-                    
+
                     <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 lang-es">
-                        Ingeniería HVAC <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-white to-blue-500">Sin Límites.</span>
+                        Excelencia técnica <br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-white to-blue-500">con
+                            propósito eterno.</span>
                     </h1>
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 lang-en lang-hidden">
-                        HVAC Engineering <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-white to-blue-500">No Limits.</span>
+                    <h1
+                        class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 lang-en lang-hidden">
+                        Technical Excellence <br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-white to-blue-500">with
+                            Eternal Purpose.</span>
                     </h1>
 
-                    <p class="text-lg text-gray-300 mb-8 max-w-lg leading-relaxed border-l-4 border-blue-600 pl-6 lang-es">
-                        Más de 25,000 unidades instaladas en proyectos residenciales, multifamiliares y comerciales. La solidez del acero, la precisión de la ingeniería y la integridad de nuestros valores cristianos como fundamento de cada operación.
+                    <div class="mb-8 lang-es">
+                        <p class="text-xl text-gray-200 italic font-serif">“Y todo lo que hagáis, hacedlo de corazón,
+                            como para el Señor y no para los hombres.”</p>
+                        <p class="text-sm text-blue-400 font-bold mt-1 uppercase tracking-widest">– Colosenses 3:23</p>
+                    </div>
+                    <div class="mb-8 lang-en lang-hidden">
+                        <p class="text-xl text-gray-200 italic font-serif">“And whatever you do, do it heartily, as to
+                            the Lord and not to men.”</p>
+                        <p class="text-sm text-blue-400 font-bold mt-1 uppercase tracking-widest">– Colossians 3:23</p>
+                    </div>
+
+                    <p
+                        class="text-lg text-gray-300 mb-8 max-w-lg leading-relaxed border-l-4 border-blue-600 pl-6 lang-es">
+                        Más de 25,000 unidades instaladas en proyectos residenciales, multifamiliares y comerciales. La
+                        solidez del acero, la precisión de la ingeniería y la integridad de nuestros valores cristianos
+                        como fundamento de cada operación.
                     </p>
-                    <p class="text-lg text-gray-300 mb-8 max-w-lg leading-relaxed border-l-4 border-blue-600 pl-6 lang-en lang-hidden">
-                        Over 25,000 units installed across residential, multifamily, and commercial projects. The solidity of steel, the precision of engineering, and our Christian values as the foundation of every operation.
+                    <p
+                        class="text-lg text-gray-300 mb-8 max-w-lg leading-relaxed border-l-4 border-blue-600 pl-6 lang-en lang-hidden">
+                        Over 25,000 units installed across residential, multifamily, and commercial projects. The
+                        solidity of steel, the precision of engineering, and our Christian values as the foundation of
+                        every operation.
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#projects" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-sm font-bold transition text-center shadow-lg shadow-red-900/30 uppercase tracking-wider lang-es">
+                        <a href="#projects"
+                            class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-sm font-bold transition text-center shadow-lg shadow-red-900/30 uppercase tracking-wider lang-es">
                             Ver Proyectos
                         </a>
-                        <a href="#projects" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-sm font-bold transition text-center shadow-lg shadow-red-900/30 uppercase tracking-wider lang-en lang-hidden">
+                        <a href="#projects"
+                            class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-sm font-bold transition text-center shadow-lg shadow-red-900/30 uppercase tracking-wider lang-en lang-hidden">
                             View Projects
                         </a>
-                        
-                        <a href="#contact" class="bg-transparent border border-white/30 hover:bg-white hover:text-black text-white px-8 py-4 rounded-sm font-bold transition text-center uppercase tracking-wider lang-es">
+
+                        <a href="#contact"
+                            class="bg-transparent border border-white/30 hover:bg-white hover:text-black text-white px-8 py-4 rounded-sm font-bold transition text-center uppercase tracking-wider lang-es">
                             Contactar
                         </a>
-                        <a href="#contact" class="bg-transparent border border-white/30 hover:bg-white hover:text-black text-white px-8 py-4 rounded-sm font-bold transition text-center uppercase tracking-wider lang-en lang-hidden">
+                        <a href="#contact"
+                            class="bg-transparent border border-white/30 hover:bg-white hover:text-black text-white px-8 py-4 rounded-sm font-bold transition text-center uppercase tracking-wider lang-en lang-hidden">
                             Contact Us
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="hidden md:block relative">
-                     <div class="relative z-10 bg-zinc-900 p-2 rounded-xl shadow-2xl border border-zinc-800 transform rotate-1 hover:rotate-0 transition duration-700 group">
-                        <div class="aspect-video bg-black rounded-lg flex items-center justify-center overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-48 h-48 bg-blue-600 opacity-10 blur-3xl rounded-full group-hover:opacity-20 transition duration-700"></div>
-                            <div class="absolute bottom-0 left-0 w-48 h-48 bg-red-600 opacity-10 blur-3xl rounded-full group-hover:opacity-20 transition duration-700"></div>
-                            
+                    <div
+                        class="relative z-10 bg-zinc-900 p-2 rounded-xl shadow-2xl border border-zinc-800 transform rotate-1 hover:rotate-0 transition duration-700 group">
+                        <div
+                            class="aspect-video bg-black rounded-lg flex items-center justify-center overflow-hidden relative">
+                            <div
+                                class="absolute top-0 right-0 w-48 h-48 bg-blue-600 opacity-10 blur-3xl rounded-full group-hover:opacity-20 transition duration-700">
+                            </div>
+                            <div
+                                class="absolute bottom-0 left-0 w-48 h-48 bg-red-600 opacity-10 blur-3xl rounded-full group-hover:opacity-20 transition duration-700">
+                            </div>
+
                             <div class="text-center relative z-10">
                                 <i class="fas fa-fan text-7xl text-white mb-6 animate-spin-slow opacity-90"></i>
-                                <h3 class="text-white font-montserrat font-bold text-3xl mb-2 tracking-widest">OPERTECH</h3>
+                                <h3 class="text-white font-montserrat font-bold text-3xl mb-2 tracking-widest">OPERTECH
+                                </h3>
                                 <div class="flex justify-center gap-3 text-xs font-bold tracking-[0.3em]">
                                     <span class="text-red-600">HEATING</span>
                                     <span class="text-gray-600">///</span>
@@ -288,7 +375,7 @@
                                 </div>
                             </div>
                         </div>
-                     </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -299,25 +386,64 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-zinc-800">
                 <div class="p-8 text-center group hover:bg-zinc-900 transition cursor-default">
-                    <div class="text-4xl font-black mb-1 text-white group-hover:text-red-600 transition duration-300">100+</div>
+                    <div class="text-4xl font-black mb-1 text-white group-hover:text-red-600 transition duration-300">
+                        100+</div>
                     <div class="text-xs uppercase tracking-widest opacity-60 lang-es">Años Experiencia Combinada</div>
-                    <div class="text-xs uppercase tracking-widest opacity-60 lang-en lang-hidden">Combined Years Experience</div>
+                    <div class="text-xs uppercase tracking-widest opacity-60 lang-en lang-hidden">Combined Years
+                        Experience</div>
                 </div>
                 <div class="p-8 text-center group hover:bg-zinc-900 transition cursor-default">
-                    <div class="text-4xl font-black mb-1 text-white group-hover:text-blue-600 transition duration-300">25k+</div>
-                    <div class="text-xs uppercase tracking-widest opacity-60 lang-es">Unidades Instaladas</div>
-                    <div class="text-xs uppercase tracking-widest opacity-60 lang-en lang-hidden">Units Installed</div>
+                    <div class="text-4xl font-black mb-1 text-white group-hover:text-blue-600 transition duration-300">
+                        25,000+</div>
+                    <div class="text-xs uppercase tracking-widest opacity-60 lang-es">Unidades Ejecutadas</div>
+                    <div class="text-xs uppercase tracking-widest opacity-60 lang-en lang-hidden">Units Executed</div>
                 </div>
                 <div class="p-8 text-center group hover:bg-zinc-900 transition cursor-default">
-                    <div class="text-4xl font-black mb-1 text-white group-hover:text-red-600 transition duration-300">5</div>
-                    <div class="text-xs uppercase tracking-widest opacity-60 lang-es">Estados Operativos</div>
-                    <div class="text-xs uppercase tracking-widest opacity-60 lang-en lang-hidden">Operating States</div>
+                    <div class="text-4xl font-black mb-1 text-white group-hover:text-red-600 transition duration-300">
+                        100+</div>
+                    <div class="text-xs uppercase tracking-widest opacity-60 lang-es">Trabajadores en Red</div>
+                    <div class="text-xs uppercase tracking-widest opacity-60 lang-en lang-hidden">Network Workers</div>
                 </div>
                 <div class="p-8 text-center group hover:bg-zinc-900 transition cursor-default">
-                    <div class="text-4xl font-black mb-1 text-white group-hover:text-blue-600 transition duration-300">100%</div>
+                    <div class="text-4xl font-black mb-1 text-white group-hover:text-blue-600 transition duration-300">
+                        100%</div>
                     <div class="text-xs uppercase tracking-widest opacity-60 lang-es">Cumplimiento IMC/ASHRAE</div>
-                    <div class="text-xs uppercase tracking-widest opacity-60 lang-en lang-hidden">IMC/ASHRAE Compliance</div>
+                    <div class="text-xs uppercase tracking-widest opacity-60 lang-en lang-hidden">IMC/ASHRAE Compliance
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-zinc-900 relative overflow-hidden border-b border-zinc-800">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 via-white to-blue-600 opacity-50">
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <div class="mb-8 text-red-600">
+                <i class="fas fa-quote-left text-4xl opacity-50"></i>
+            </div>
+
+            <h2
+                class="text-2xl md:text-3xl font-montserrat font-black text-white mb-8 uppercase tracking-widest lang-es">
+                Declaración de Propósito
+            </h2>
+            <h2
+                class="text-2xl md:text-3xl font-montserrat font-black text-white mb-8 uppercase tracking-widest lang-en lang-hidden">
+                Statement of Purpose
+            </h2>
+
+            <div class="relative">
+                <p class="text-xl md:text-2xl font-serif text-gray-300 leading-relaxed mb-6 lang-es">
+                    Somos una empresa fundada bajo la soberanía de Dios Altísimo. Nuestra visión es ejecutar proyectos
+                    HVAC de gran escala con excelencia técnica, ética profesional y propósito eterno. Operamos como
+                    administradores del favor de Dios, sirviendo a clientes, técnicos y comunidades con integridad.
+                </p>
+                <p class="text-xl md:text-2xl font-serif text-gray-300 leading-relaxed mb-6 lang-en lang-hidden">
+                    We are a company founded under the sovereignty of God Almighty. Our vision is to execute large-scale
+                    HVAC projects with technical excellence, professional ethics, and eternal purpose. We operate as
+                    stewards of God's favor, serving clients, technicians, and communities with integrity.
+                </p>
             </div>
         </div>
     </section>
@@ -326,64 +452,183 @@
     <section id="about" class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-black text-black mb-4 uppercase tracking-tight lang-es">¿Quiénes Somos?</h2>
-                <h2 class="text-3xl md:text-4xl font-black text-black mb-4 uppercase tracking-tight lang-en lang-hidden">Who We Are</h2>
-                
+                <h2 class="text-3xl md:text-4xl font-black text-black mb-4 uppercase tracking-tight lang-es">¿Quiénes
+                    Somos?</h2>
+                <h2
+                    class="text-3xl md:text-4xl font-black text-black mb-4 uppercase tracking-tight lang-en lang-hidden">
+                    Who We Are</h2>
+
                 <div class="flex justify-center gap-1 mb-8">
                     <div class="w-12 h-1.5 bg-red-600 rounded-l-sm"></div>
                     <div class="w-12 h-1.5 bg-blue-600 rounded-r-sm"></div>
                 </div>
 
                 <p class="text-lg text-slate-600 leading-relaxed lang-es">
-                    OPERTECH LLC es una empresa de instalación y servicio HVAC fundada sobre principios de excelencia técnica, integridad inquebrantable y servicio comprometido. Con sede corporativa en Florida y operaciones centrales en Ohio, hemos construido una reputación como el socio preferido de contratistas generales y desarrolladores que demandan resultados impecables en proyectos de alto volumen.
+                    OPERTECH LLC es una empresa de instalación y servicio HVAC fundada sobre principios de excelencia
+                    técnica, integridad inquebrantable y servicio comprometido. Con sede corporativa en Florida y
+                    operaciones centrales en Ohio, hemos construido una reputación como el socio preferido de
+                    contratistas generales y desarrolladores que demandan resultados impecables en proyectos de alto
+                    volumen.
                 </p>
-                <p class="text-lg text-slate-600 leading-relaxed lang-en lang-hidden">
-                    OPERTECH LLC is an HVAC installation and service company founded on principles of technical excellence, unwavering integrity, and committed service. With corporate headquarters in Florida and central operations in Ohio, we have built a reputation as the preferred partner for general contractors and developers who demand impeccable results on high-volume projects.
+                <p class="text-lg text-slate-600 leading-relaxed lang-en lang-hidden mb-6">
+                    OPERTECH LLC is an HVAC installation and service company founded on principles of technical
+                    excellence, unwavering integrity, and committed service. With corporate headquarters in Florida and
+                    central operations in Ohio, we have built a reputation as the preferred partner for general
+                    contractors and developers who demand impeccable results on high-volume projects.
                 </p>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-600 mb-8 text-left">
+                    <p class="text-slate-700 mb-4 lang-es">
+                        Somos una empresa que reconoce a Dios Altísimo como el Dueño de todo. Nuestro propósito va más
+                        allá de ejecutar sistemas HVAC: trabajamos como mayordomos fieles ante Dios, con excelencia,
+                        integridad y verdad en cada decisión técnica, administrativa y contractual.
+                    </p>
+                    <p class="text-slate-700 mb-4 lang-en lang-hidden">
+                        We are a company that recognizes God Almighty as the Owner of everything. Our purpose goes
+                        beyond executing HVAC systems: we work as faithful stewards before God, with excellence,
+                        integrity, and truth in every technical, administrative, and contractual decision.
+                    </p>
+
+                    <blockquote class="text-slate-500 italic text-sm lang-es">
+                        “No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te esfuerzo; siempre
+                        te ayudaré, siempre te sustentaré con la diestra de mi justicia.” <br>
+                        <span class="font-bold text-red-600 not-italic mt-1 block">– Isaías 41:10</span>
+                    </blockquote>
+                    <blockquote class="text-slate-500 italic text-sm lang-en lang-hidden">
+                        “Fear not, for I am with you; be not dismayed, for I am your God. I will strengthen you, Yes, I
+                        will help you, I will uphold you with My righteous right hand.” <br>
+                        <span class="font-bold text-red-600 not-italic mt-1 block">– Isaiah 41:10</span>
+                    </blockquote>
+                </div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div class="bg-white p-8 rounded shadow-md border-t-4 border-red-600 hover:-translate-y-2 transition duration-300 group">
-                    <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-red-600 transition duration-300">
+                <div
+                    class="bg-white p-8 rounded shadow-md border-t-4 border-red-600 hover:-translate-y-2 transition duration-300 group">
+                    <div
+                        class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-red-600 transition duration-300">
                         <i class="fas fa-users text-3xl text-red-600 group-hover:text-white transition"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-black lang-es">Equipo de Élite</h3>
                     <h3 class="text-xl font-bold mb-3 text-black lang-en lang-hidden">Elite Team</h3>
                     <p class="text-slate-600 text-sm leading-relaxed lang-es">
-                        Contamos con más de 12 técnicos internos altamente especializados, respaldados por una red de subcontratistas bajo supervisión directa. Nuestro equipo incluye ingenieros mecánicos, técnicos certificados EPA 608, y especialistas en commissioning.
+                        Contamos con más de 12 técnicos internos altamente especializados, respaldados por una red de
+                        subcontratistas bajo supervisión directa. Nuestro equipo incluye ingenieros mecánicos, técnicos
+                        certificados EPA 608, y especialistas en commissioning.
                     </p>
                     <p class="text-slate-600 text-sm leading-relaxed lang-en lang-hidden">
-                        We have over 12 highly specialized in-house technicians, backed by a network of subcontractors under direct supervision. Our team includes mechanical engineers, EPA 608 certified technicians, and commissioning specialists.
+                        We have over 12 highly specialized in-house technicians, backed by a network of subcontractors
+                        under direct supervision. Our team includes mechanical engineers, EPA 608 certified technicians,
+                        and commissioning specialists.
                     </p>
                 </div>
                 <!-- Card 2 -->
-                <div class="bg-white p-8 rounded shadow-md border-t-4 border-blue-600 hover:-translate-y-2 transition duration-300 group">
-                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-600 transition duration-300">
+                <div
+                    class="bg-white p-8 rounded shadow-md border-t-4 border-blue-600 hover:-translate-y-2 transition duration-300 group">
+                    <div
+                        class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-600 transition duration-300">
                         <i class="fas fa-drafting-compass text-3xl text-blue-600 group-hover:text-white transition"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-black lang-es">Ingeniería & Diseño</h3>
                     <h3 class="text-xl font-bold mb-3 text-black lang-en lang-hidden">Engineering & Design</h3>
                     <p class="text-slate-600 text-sm leading-relaxed lang-es">
-                        No solo instalamos: optimizamos. Ofrecemos rediseño de planos mecánicos, detección de conflictos (clash detection), elaboración de RFIs técnicos y preparación de Submittals completos con software BIM.
+                        No solo instalamos: optimizamos. Ofrecemos rediseño de planos mecánicos, detección de conflictos
+                        (clash detection), elaboración de RFIs técnicos y preparación de Submittals completos con
+                        software BIM.
                     </p>
                     <p class="text-slate-600 text-sm leading-relaxed lang-en lang-hidden">
-                        We don't just install: we optimize. We offer mechanical plan redesign, clash detection, technical RFI preparation, and complete Submittal packages using BIM software.
+                        We don't just install: we optimize. We offer mechanical plan redesign, clash detection,
+                        technical RFI preparation, and complete Submittal packages using BIM software.
                     </p>
                 </div>
                 <!-- Card 3 -->
-                <div class="bg-white p-8 rounded shadow-md border-t-4 border-black hover:-translate-y-2 transition duration-300 group">
-                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-black transition duration-300">
+                <div
+                    class="bg-white p-8 rounded shadow-md border-t-4 border-black hover:-translate-y-2 transition duration-300 group">
+                    <div
+                        class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-black transition duration-300">
                         <i class="fas fa-bible text-3xl text-black group-hover:text-white transition"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-black lang-es">Valores Eternos</h3>
                     <h3 class="text-xl font-bold mb-3 text-black lang-en lang-hidden">Eternal Values</h3>
                     <p class="text-slate-600 text-sm leading-relaxed lang-es">
-                        Administramos cada proyecto con integridad absoluta, conscientes de que somos mayordomos de los recursos de nuestros clientes. Nuestra fe cristiana guía cada decisión empresarial.
+                        Administramos cada proyecto con integridad absoluta, conscientes de que somos mayordomos de los
+                        recursos de nuestros clientes. Nuestra fe cristiana guía cada decisión empresarial.
                     </p>
                     <p class="text-slate-600 text-sm leading-relaxed lang-en lang-hidden">
-                        We manage every project with absolute integrity, aware that we are stewards of our clients' resources. Our Christian faith guides every business decision.
+                        We manage every project with absolute integrity, aware that we are stewards of our clients'
+                        resources. Our Christian faith guides every business decision.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Differentiator Section -->
+    <section class="py-20 bg-zinc-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black mb-4 uppercase tracking-tight lang-es">Lo que nos diferencia
+                </h2>
+                <h2 class="text-3xl md:text-4xl font-black mb-4 uppercase tracking-tight lang-en lang-hidden">What Sets
+                    Us Apart</h2>
+                <div class="w-24 h-1 bg-red-600 mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-zinc-800 p-8 rounded border border-zinc-700 hover:border-red-600 transition duration-300">
+                    <i class="fas fa-search text-3xl text-red-600 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 lang-es">Detección de Errores</h3>
+                    <h3 class="text-xl font-bold mb-4 lang-en lang-hidden">Error Detection</h3>
+                    <p class="text-gray-400 text-sm lang-es">Detectamos errores de diseño antes de la ejecución,
+                        evitando sobrecostos y retrasos.</p>
+                    <p class="text-gray-400 text-sm lang-en lang-hidden">We detect design errors before execution,
+                        avoiding cost overruns and delays.</p>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="bg-zinc-800 p-8 rounded border border-zinc-700 hover:border-blue-600 transition duration-300">
+                    <i class="fas fa-book text-3xl text-blue-600 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 lang-es">Cumplimiento Normativo</h3>
+                    <h3 class="text-xl font-bold mb-4 lang-en lang-hidden">Code Compliance</h3>
+                    <p class="text-gray-400 text-sm lang-es">Proponemos soluciones conforme a códigos IMC e IRC
+                        vigentes.</p>
+                    <p class="text-gray-400 text-sm lang-en lang-hidden">We propose solutions in compliance with current
+                        IMC and IRC codes.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-zinc-800 p-8 rounded border border-zinc-700 hover:border-white transition duration-300">
+                    <i class="fas fa-pencil-ruler text-3xl text-white mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 lang-es">Diseño & Documentación</h3>
+                    <h3 class="text-xl font-bold mb-4 lang-en lang-hidden">Design & Documentation</h3>
+                    <p class="text-gray-400 text-sm lang-es">Creamos submittals, RFIs y rediseños AutoCAD, Revit desde
+                        cero.</p>
+                    <p class="text-gray-400 text-sm lang-en lang-hidden">We create submittals, RFIs, and AutoCAD/Revit
+                        redesigns from scratch.</p>
+                </div>
+                <!-- Card 4 -->
+                <div
+                    class="bg-zinc-800 p-8 rounded border border-zinc-700 hover:border-red-600 transition duration-300">
+                    <i class="fas fa-clipboard-list text-3xl text-red-600 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 lang-es">Gestión Documental</h3>
+                    <h3 class="text-xl font-bold mb-4 lang-en lang-hidden">Document Management</h3>
+                    <p class="text-gray-400 text-sm lang-es">Documentamos cada fase para inspecciones, coordinación y
+                        aprobación.</p>
+                    <p class="text-gray-400 text-sm lang-en lang-hidden">We document every phase for inspections,
+                        coordination, and approval.</p>
+                </div>
+                <!-- Card 5 -->
+                <div
+                    class="bg-zinc-800 p-8 rounded border border-zinc-700 hover:border-blue-600 transition duration-300">
+                    <i class="fas fa-praying-hands text-3xl text-blue-600 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 lang-es">Ética y Adoración</h3>
+                    <h3 class="text-xl font-bold mb-4 lang-en lang-hidden">Ethics & Worship</h3>
+                    <p class="text-gray-400 text-sm lang-es">Ejecutamos con ética y excelencia como una forma de
+                        adoración.</p>
+                    <p class="text-gray-400 text-sm lang-en lang-hidden">We execute with ethics and excellence as a form
+                        of worship.</p>
                 </div>
             </div>
         </div>
@@ -394,7 +639,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-red-600 font-bold tracking-widest uppercase text-sm lang-es">Capacidades</span>
-                <span class="text-red-600 font-bold tracking-widest uppercase text-sm lang-en lang-hidden">Capabilities</span>
+                <span
+                    class="text-red-600 font-bold tracking-widest uppercase text-sm lang-en lang-hidden">Capabilities</span>
                 <h2 class="text-4xl font-black text-black mt-2 mb-4 lang-es">Servicios Especializados</h2>
                 <h2 class="text-4xl font-black text-black mt-2 mb-4 lang-en lang-hidden">Specialized Services</h2>
                 <div class="flex justify-center gap-1 mb-6">
@@ -405,12 +651,13 @@
 
             <!-- Main Services Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                
+
                 <!-- Service 1: Residential -->
                 <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-md group">
                     <div class="h-3 bg-gradient-to-r from-red-600 to-red-500"></div>
                     <div class="p-8">
-                        <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 transition">
+                        <div
+                            class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 transition">
                             <i class="fas fa-home text-2xl text-red-600 group-hover:text-white transition"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-4 text-black lang-es">HVAC Residencial</h3>
@@ -439,7 +686,8 @@
                 <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-md group">
                     <div class="h-3 bg-gradient-to-r from-blue-600 to-blue-500"></div>
                     <div class="p-8">
-                        <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition">
+                        <div
+                            class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition">
                             <i class="fas fa-building text-2xl text-blue-600 group-hover:text-white transition"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-4 text-black lang-es">Multifamiliar</h3>
@@ -468,7 +716,8 @@
                 <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-md group">
                     <div class="h-3 bg-gradient-to-r from-black to-gray-800"></div>
                     <div class="p-8">
-                        <div class="w-14 h-14 bg-gray-200 rounded-lg flex items-center justify-center mb-6 group-hover:bg-black transition">
+                        <div
+                            class="w-14 h-14 bg-gray-200 rounded-lg flex items-center justify-center mb-6 group-hover:bg-black transition">
                             <i class="fas fa-city text-2xl text-black group-hover:text-white transition"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-4 text-black lang-es">Comercial & Industrial</h3>
@@ -497,7 +746,8 @@
                 <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-md group">
                     <div class="h-3 bg-gradient-to-r from-red-600 to-blue-600"></div>
                     <div class="p-8">
-                        <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 transition">
+                        <div
+                            class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 transition">
                             <i class="fas fa-wind text-2xl text-red-600 group-hover:text-white transition"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-4 text-black lang-es">Fabricación de Ductos</h3>
@@ -526,8 +776,10 @@
                 <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-md group">
                     <div class="h-3 bg-gradient-to-r from-blue-600 to-blue-500"></div>
                     <div class="p-8">
-                        <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition">
-                            <i class="fas fa-clipboard-check text-2xl text-blue-600 group-hover:text-white transition"></i>
+                        <div
+                            class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition">
+                            <i
+                                class="fas fa-clipboard-check text-2xl text-blue-600 group-hover:text-white transition"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-4 text-black lang-es">Commissioning & Start-Up</h3>
                         <h3 class="text-xl font-bold mb-4 text-black lang-en lang-hidden">Commissioning & Start-Up</h3>
@@ -555,7 +807,8 @@
                 <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-md group">
                     <div class="h-3 bg-gradient-to-r from-black to-gray-800"></div>
                     <div class="p-8">
-                        <div class="w-14 h-14 bg-gray-200 rounded-lg flex items-center justify-center mb-6 group-hover:bg-black transition">
+                        <div
+                            class="w-14 h-14 bg-gray-200 rounded-lg flex items-center justify-center mb-6 group-hover:bg-black transition">
                             <i class="fas fa-tools text-2xl text-black group-hover:text-white transition"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-4 text-black lang-es">Servicio & Mantenimiento</h3>
@@ -586,7 +839,8 @@
                 <div class="grid md:grid-cols-2 gap-8 items-center">
                     <div>
                         <h3 class="text-2xl font-bold text-white mb-4 lang-es">Certificaciones & Cumplimiento</h3>
-                        <h3 class="text-2xl font-bold text-white mb-4 lang-en lang-hidden">Certifications & Compliance</h3>
+                        <h3 class="text-2xl font-bold text-white mb-4 lang-en lang-hidden">Certifications & Compliance
+                        </h3>
                         <p class="text-gray-400 mb-6 lang-es">
                             Todos nuestros proyectos cumplen con los estándares más exigentes de la industria.
                         </p>
@@ -620,13 +874,15 @@
     <!-- Interactive Map Section with jVectorMap -->
     <section id="map" class="py-24 bg-black text-white overflow-hidden relative">
         <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-red-600 via-black to-blue-600"></div>
-        
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold mb-2 lang-es">Cobertura Operativa</h2>
                 <h2 class="text-3xl md:text-4xl font-bold mb-2 lang-en lang-hidden">Operational Coverage</h2>
-                <p class="text-red-500 font-bold uppercase tracking-widest text-sm mb-4 lang-es">Logística Multi-Estatal</p>
-                <p class="text-red-500 font-bold uppercase tracking-widest text-sm mb-4 lang-en lang-hidden">Multi-State Logistics</p>
+                <p class="text-red-500 font-bold uppercase tracking-widest text-sm mb-4 lang-es">Logística Multi-Estatal
+                </p>
+                <p class="text-red-500 font-bold uppercase tracking-widest text-sm mb-4 lang-en lang-hidden">Multi-State
+                    Logistics</p>
                 <p class="text-gray-400 max-w-2xl mx-auto lang-es">
                     Haga clic en los estados del mapa para ver detalles de cada ubicación operativa.
                 </p>
@@ -636,11 +892,12 @@
             </div>
 
             <div class="grid lg:grid-cols-5 gap-8 items-start">
-                
+
                 <!-- Left: State Selector -->
                 <div class="lg:col-span-2 space-y-3">
                     <!-- OH -->
-                    <div class="state-btn active bg-zinc-900 hover:bg-zinc-800 p-4 rounded cursor-pointer group" onclick="selectState('US-OH')" data-state="US-OH">
+                    <div class="state-btn active bg-zinc-900 hover:bg-zinc-800 p-4 rounded cursor-pointer group"
+                        onclick="selectState('US-OH')" data-state="US-OH">
                         <div class="flex justify-between items-center">
                             <div class="flex items-center gap-3">
                                 <span class="w-3 h-3 rounded-full bg-red-600"></span>
@@ -650,31 +907,39 @@
                             <i class="fas fa-chevron-right text-gray-600 group-hover:text-blue-500"></i>
                         </div>
                         <p class="text-sm text-gray-400 mt-3 state-detail lang-es" id="detail-US-OH-es">
-                            <strong class="text-white">Cincinnati, OH</strong> - Centro principal de operaciones. Capacidad completa para proyectos Multifamily (+300 unidades) y Comercial Pesado.
+                            <strong class="text-white">Cincinnati, OH</strong> - Centro principal de operaciones.
+                            Capacidad completa para proyectos Multifamily (+300 unidades) y Comercial Pesado.
                         </p>
                         <p class="text-sm text-gray-400 mt-3 state-detail lang-en lang-hidden" id="detail-US-OH-en">
-                            <strong class="text-white">Cincinnati, OH</strong> - Main operations center. Full capacity for Multifamily (+300 units) and Heavy Commercial projects.
+                            <strong class="text-white">Cincinnati, OH</strong> - Main operations center. Full capacity
+                            for Multifamily (+300 units) and Heavy Commercial projects.
                         </p>
                     </div>
                     <!-- FL -->
-                    <div class="state-btn bg-zinc-900 hover:bg-zinc-800 p-4 rounded cursor-pointer border-l-4 border-transparent hover:border-red-600 transition group" onclick="selectState('US-FL')" data-state="US-FL">
+                    <div class="state-btn bg-zinc-900 hover:bg-zinc-800 p-4 rounded cursor-pointer border-l-4 border-transparent hover:border-red-600 transition group"
+                        onclick="selectState('US-FL')" data-state="US-FL">
                         <div class="flex justify-between items-center">
                             <div class="flex items-center gap-3">
                                 <span class="w-3 h-3 rounded-full bg-blue-600"></span>
                                 <h4 class="font-bold text-lg text-gray-300 lang-es">Florida (Sede Corporativa)</h4>
-                                <h4 class="font-bold text-lg text-gray-300 lang-en lang-hidden">Florida (Corporate Headquarters)</h4>
+                                <h4 class="font-bold text-lg text-gray-300 lang-en lang-hidden">Florida (Corporate
+                                    Headquarters)</h4>
                             </div>
                             <i class="fas fa-chevron-right text-gray-600 group-hover:text-blue-500"></i>
                         </div>
                         <p class="text-sm text-gray-400 mt-3 hidden state-detail lang-es" id="detail-US-FL-es">
-                            <strong class="text-white">Miami, FL</strong> - Dirección ejecutiva y administración. Proyectos especializados en control de humedad y climatización tropical.
+                            <strong class="text-white">Miami, FL</strong> - Dirección ejecutiva y administración.
+                            Proyectos especializados en control de humedad y climatización tropical.
                         </p>
-                        <p class="text-sm text-gray-400 mt-3 hidden state-detail lang-en lang-hidden" id="detail-US-FL-en">
-                            <strong class="text-white">Miami, FL</strong> - Executive management and administration. Specialized projects in humidity control and tropical climate systems.
+                        <p class="text-sm text-gray-400 mt-3 hidden state-detail lang-en lang-hidden"
+                            id="detail-US-FL-en">
+                            <strong class="text-white">Miami, FL</strong> - Executive management and administration.
+                            Specialized projects in humidity control and tropical climate systems.
                         </p>
                     </div>
                     <!-- KY -->
-                    <div class="state-btn bg-zinc-900 hover:bg-zinc-800 p-4 rounded cursor-pointer border-l-4 border-transparent hover:border-blue-600 transition group" onclick="selectState('US-KY')" data-state="US-KY">
+                    <div class="state-btn bg-zinc-900 hover:bg-zinc-800 p-4 rounded cursor-pointer border-l-4 border-transparent hover:border-blue-600 transition group"
+                        onclick="selectState('US-KY')" data-state="US-KY">
                         <div class="flex justify-between items-center">
                             <div class="flex items-center gap-3">
                                 <span class="w-3 h-3 rounded-full bg-blue-600"></span>
@@ -683,14 +948,18 @@
                             <i class="fas fa-chevron-right text-gray-600 group-hover:text-blue-500"></i>
                         </div>
                         <p class="text-sm text-gray-400 mt-3 hidden state-detail lang-es" id="detail-US-KY-es">
-                            <strong class="text-white">Louisville/Lexington</strong> - Especialidad en Residencial de Lujo y Comercial Ligero. Respuesta en 2-4 horas desde Cincinnati.
+                            <strong class="text-white">Louisville/Lexington</strong> - Especialidad en Residencial de
+                            Lujo y Comercial Ligero. Respuesta en 2-4 horas desde Cincinnati.
                         </p>
-                        <p class="text-sm text-gray-400 mt-3 hidden state-detail lang-en lang-hidden" id="detail-US-KY-en">
-                            <strong class="text-white">Louisville/Lexington</strong> - Specialty in Luxury Residential and Light Commercial. 2-4 hour response from Cincinnati.
+                        <p class="text-sm text-gray-400 mt-3 hidden state-detail lang-en lang-hidden"
+                            id="detail-US-KY-en">
+                            <strong class="text-white">Louisville/Lexington</strong> - Specialty in Luxury Residential
+                            and Light Commercial. 2-4 hour response from Cincinnati.
                         </p>
                     </div>
                     <!-- IN -->
-                    <div class="state-btn bg-zinc-900 hover:bg-zinc-800 p-4 rounded cursor-pointer border-l-4 border-transparent hover:border-blue-600 transition group" onclick="selectState('US-IN')" data-state="US-IN">
+                    <div class="state-btn bg-zinc-900 hover:bg-zinc-800 p-4 rounded cursor-pointer border-l-4 border-transparent hover:border-blue-600 transition group"
+                        onclick="selectState('US-IN')" data-state="US-IN">
                         <div class="flex justify-between items-center">
                             <div class="flex items-center gap-3">
                                 <span class="w-3 h-3 rounded-full bg-blue-600"></span>
@@ -699,14 +968,18 @@
                             <i class="fas fa-chevron-right text-gray-600 group-hover:text-blue-500"></i>
                         </div>
                         <p class="text-sm text-gray-400 mt-3 hidden state-detail lang-es" id="detail-US-IN-es">
-                            <strong class="text-white">Indianapolis/Sur de Indiana</strong> - Cobertura logística para expansiones comerciales y proyectos industriales.
+                            <strong class="text-white">Indianapolis/Sur de Indiana</strong> - Cobertura logística para
+                            expansiones comerciales y proyectos industriales.
                         </p>
-                        <p class="text-sm text-gray-400 mt-3 hidden state-detail lang-en lang-hidden" id="detail-US-IN-en">
-                            <strong class="text-white">Indianapolis/Southern IN</strong> - Logistics coverage for commercial expansions and industrial projects.
+                        <p class="text-sm text-gray-400 mt-3 hidden state-detail lang-en lang-hidden"
+                            id="detail-US-IN-en">
+                            <strong class="text-white">Indianapolis/Southern IN</strong> - Logistics coverage for
+                            commercial expansions and industrial projects.
                         </p>
                     </div>
                     <!-- TN -->
-                    <div class="state-btn bg-zinc-900 hover:bg-zinc-800 p-4 rounded cursor-pointer border-l-4 border-transparent hover:border-blue-600 transition group" onclick="selectState('US-TN')" data-state="US-TN">
+                    <div class="state-btn bg-zinc-900 hover:bg-zinc-800 p-4 rounded cursor-pointer border-l-4 border-transparent hover:border-blue-600 transition group"
+                        onclick="selectState('US-TN')" data-state="US-TN">
                         <div class="flex justify-between items-center">
                             <div class="flex items-center gap-3">
                                 <span class="w-3 h-3 rounded-full bg-blue-600"></span>
@@ -715,10 +988,13 @@
                             <i class="fas fa-chevron-right text-gray-600 group-hover:text-blue-500"></i>
                         </div>
                         <p class="text-sm text-gray-400 mt-3 hidden state-detail lang-es" id="detail-US-TN-es">
-                            <strong class="text-white">Nashville/Memphis</strong> - Mercado en crecimiento con alta demanda multifamiliar y desarrollo urbano.
+                            <strong class="text-white">Nashville/Memphis</strong> - Mercado en crecimiento con alta
+                            demanda multifamiliar y desarrollo urbano.
                         </p>
-                        <p class="text-sm text-gray-400 mt-3 hidden state-detail lang-en lang-hidden" id="detail-US-TN-en">
-                            <strong class="text-white">Nashville/Memphis</strong> - Growing market with high multifamily demand and urban development.
+                        <p class="text-sm text-gray-400 mt-3 hidden state-detail lang-en lang-hidden"
+                            id="detail-US-TN-en">
+                            <strong class="text-white">Nashville/Memphis</strong> - Growing market with high multifamily
+                            demand and urban development.
                         </p>
                     </div>
                 </div>
@@ -727,7 +1003,7 @@
                 <div class="lg:col-span-3">
                     <div class="bg-zinc-900 rounded-lg p-4 border border-zinc-800">
                         <div id="us-map" class="jvectormap-container"></div>
-                        
+
                         <!-- Legend -->
                         <div class="flex justify-center gap-6 mt-4 pt-4 border-t border-zinc-800">
                             <div class="flex items-center gap-2">
@@ -752,7 +1028,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-red-600 font-bold tracking-widest uppercase text-sm lang-es">Portafolio</span>
-                <span class="text-red-600 font-bold tracking-widest uppercase text-sm lang-en lang-hidden">Portfolio</span>
+                <span
+                    class="text-red-600 font-bold tracking-widest uppercase text-sm lang-en lang-hidden">Portfolio</span>
                 <h2 class="text-4xl font-black text-black mt-2 mb-4 lang-es">Galería de Ejecución</h2>
                 <h2 class="text-4xl font-black text-black mt-2 mb-4 lang-en lang-hidden">Execution Gallery</h2>
                 <p class="text-slate-500 max-w-2xl mx-auto lang-es">
@@ -765,7 +1042,7 @@
 
             <!-- Grid of 20 Slots -->
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                
+
                 <div class="project-card group cursor-pointer">
                     <i class="fas fa-building"></i>
                     <div class="project-overlay">
@@ -827,7 +1104,7 @@
                 <div class="project-card group cursor-pointer"><i class="fas fa-snowflake"></i></div>
                 <div class="project-card group cursor-pointer"><i class="fas fa-fire"></i></div>
                 <div class="project-card group cursor-pointer"><i class="fas fa-project-diagram"></i></div>
-                
+
                 <div class="project-card group cursor-pointer bg-black border-none flex flex-col">
                     <h4 class="text-white font-bold text-xl mb-2">20+</h4>
                     <p class="text-blue-400 text-xs text-center px-2 lang-es">Ver más en Instagram</p>
@@ -839,16 +1116,51 @@
         </div>
     </section>
 
+    <!-- Clients Section -->
+    <section class="py-16 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold text-black mb-2 uppercase tracking-wide lang-es">Empresas con las que hemos
+                trabajado</h2>
+            <h2 class="text-2xl font-bold text-black mb-2 uppercase tracking-wide lang-en lang-hidden">Companies We Have
+                Worked With</h2>
+            <p class="text-slate-500 mb-10 max-w-2xl mx-auto lang-es">Hemos sido subcontratistas de confianza para
+                empresas mecánicas y contratistas generales de alto nivel en el Midwest.</p>
+            <p class="text-slate-500 mb-10 max-w-2xl mx-auto lang-en lang-hidden">We have been trusted subcontractors
+                for top-tier mechanical companies and general contractors in the Midwest.</p>
+
+            <div
+                class="flex flex-wrap justify-center items-center gap-8 opacity-70 grayscale hover:grayscale-0 transition duration-500">
+                <!-- Placeholder Logos (Text based for now as requested, can be replaced with images) -->
+                <div class="px-6 py-3 bg-white shadow-sm rounded border border-gray-100 font-bold text-slate-700">
+                    Sunderland Mechanical LLC</div>
+                <div class="px-6 py-3 bg-white shadow-sm rounded border border-gray-100 font-bold text-slate-700">
+                    Ruscilli Construction</div>
+                <div class="px-6 py-3 bg-white shadow-sm rounded border border-gray-100 font-bold text-slate-700">Denton
+                    Floyd Real Estate</div>
+                <div class="px-6 py-3 bg-white shadow-sm rounded border border-gray-100 font-bold text-slate-700">The
+                    Marian Group</div>
+                <div class="px-6 py-3 bg-white shadow-sm rounded border border-gray-100 font-bold text-slate-700">CAIR
+                    Heating & Cooling</div>
+                <div class="px-6 py-3 bg-white shadow-sm rounded border border-gray-100 font-bold text-slate-700">
+                    Arlington Construction</div>
+                <div class="px-6 py-3 bg-white shadow-sm rounded border border-gray-100 font-bold text-slate-700">Clover
+                    Group inc.</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact & Footer -->
     <footer id="contact" class="bg-black text-white pt-20 pb-10 border-t border-zinc-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                
+
                 <!-- Brand -->
                 <div class="col-span-1 lg:col-span-2">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="font-montserrat font-black text-2xl tracking-tighter select-none bg-white px-2 rounded-sm">
-                             <span class="text-black">O</span><span class="text-black">P</span><span class="text-black">T</span>
+                        <div
+                            class="font-montserrat font-black text-2xl tracking-tighter select-none bg-white px-2 rounded-sm">
+                            <span class="text-black">O</span><span class="text-black">P</span><span
+                                class="text-black">T</span>
                         </div>
                         <div>
                             <span class="font-montserrat text-xl font-bold tracking-tight text-red-600">OPERTECH</span>
@@ -856,22 +1168,31 @@
                         </div>
                     </div>
                     <p class="text-gray-400 leading-relaxed mb-6 max-w-md lang-es">
-                        Empresa líder en soluciones HVAC con un fundamento ético inquebrantable. Servimos a contratistas generales y desarrolladores con excelencia técnica y valores cristianos.
+                        Empresa líder en soluciones HVAC con un fundamento ético inquebrantable. Servimos a contratistas
+                        generales y desarrolladores con excelencia técnica y valores cristianos.
                     </p>
                     <p class="text-gray-400 leading-relaxed mb-6 max-w-md lang-en lang-hidden">
-                        Leading HVAC solutions company with an unwavering ethical foundation. We serve general contractors and developers with technical excellence and Christian values.
+                        Leading HVAC solutions company with an unwavering ethical foundation. We serve general
+                        contractors and developers with technical excellence and Christian values.
                     </p>
                     <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded bg-zinc-900 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="w-10 h-10 rounded bg-zinc-900 flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded bg-zinc-900 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black transition"><i class="fas fa-envelope"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded bg-zinc-900 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded bg-zinc-900 flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded bg-zinc-900 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black transition"><i
+                                class="fas fa-envelope"></i></a>
                     </div>
                 </div>
 
                 <!-- Contact Info -->
                 <div>
                     <h4 class="font-bold text-lg mb-6 border-l-4 border-red-600 pl-3 lang-es">Contacto Operativo</h4>
-                    <h4 class="font-bold text-lg mb-6 border-l-4 border-red-600 pl-3 lang-en lang-hidden">Operational Contact</h4>
+                    <h4 class="font-bold text-lg mb-6 border-l-4 border-red-600 pl-3 lang-en lang-hidden">Operational
+                        Contact</h4>
                     <ul class="space-y-4 text-gray-400 text-sm">
                         <li class="flex items-start gap-3">
                             <i class="fas fa-map-marker-alt text-blue-600 mt-1"></i>
@@ -891,18 +1212,21 @@
                 <!-- Leadership -->
                 <div>
                     <h4 class="font-bold text-lg mb-6 border-l-4 border-blue-600 pl-3 lang-es">Liderazgo</h4>
-                    <h4 class="font-bold text-lg mb-6 border-l-4 border-blue-600 pl-3 lang-en lang-hidden">Leadership</h4>
+                    <h4 class="font-bold text-lg mb-6 border-l-4 border-blue-600 pl-3 lang-en lang-hidden">Leadership
+                    </h4>
                     <div class="text-gray-400">
                         <p class="font-bold text-white">Ing. Gregorio Alvarado</p>
                         <p class="text-xs uppercase tracking-wider text-red-500 mb-4">Founder & CEO</p>
                         <blockquote class="text-xs italic border-l border-zinc-700 pl-3 text-gray-500">
-                            "Serving with excellence, integrity, and purpose — under the supreme authority of God Almighty."
+                            "Serving with excellence, integrity, and purpose — under the supreme authority of God
+                            Almighty."
                         </blockquote>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+            <div
+                class="border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
                 <p class="lang-es">&copy; 2024 OPERTECH LLC. Todos los Derechos Reservados.</p>
                 <p class="lang-en lang-hidden">&copy; 2024 OPERTECH LLC. All Rights Reserved.</p>
                 <div class="flex gap-6 mt-4 md:mt-0">
@@ -931,7 +1255,7 @@
                 esElements.forEach(el => el.classList.remove('lang-hidden'));
                 document.documentElement.lang = 'es';
             }
-            
+
             // Save preference
             localStorage.setItem('opertech-lang', lang);
         }
@@ -943,10 +1267,10 @@
             if (savedLang) {
                 return savedLang;
             }
-            
+
             // Detect browser language
             const browserLang = navigator.language || navigator.userLanguage;
-            
+
             // If browser is in Spanish, use Spanish; otherwise default to English
             if (browserLang.startsWith('es')) {
                 return 'es';
@@ -975,7 +1299,7 @@
                     h4.classList.remove('text-white');
                     h4.classList.add('text-gray-300');
                 });
-                
+
                 // Hide all details
                 const details = btn.querySelectorAll('.state-detail');
                 details.forEach(detail => detail.classList.add('hidden'));
@@ -983,17 +1307,17 @@
 
             // Activate selected button
             const activeBtn = document.querySelector(`.state-btn[data-state="${stateCode}"]`);
-            if(activeBtn) {
+            if (activeBtn) {
                 activeBtn.classList.remove('bg-zinc-900');
                 activeBtn.classList.add('active');
                 const h4s = activeBtn.querySelectorAll('h4');
                 h4s.forEach(h4 => h4.classList.remove('text-gray-300'));
-                
+
                 // Show details for both languages (CSS will hide the inactive one)
                 const detailEs = document.getElementById(`detail-${stateCode}-es`);
                 const detailEn = document.getElementById(`detail-${stateCode}-en`);
-                if(detailEs) detailEs.classList.remove('hidden');
-                if(detailEn) detailEn.classList.remove('hidden');
+                if (detailEs) detailEs.classList.remove('hidden');
+                if (detailEn) detailEn.classList.remove('hidden');
             }
 
             // Update map colors
@@ -1003,7 +1327,7 @@
         // Update map colors when a state is selected
         function updateMapColors(selectedState) {
             const colors = {};
-            
+
             activeStates.forEach(state => {
                 if (state === selectedState) {
                     colors[state] = state === hqState ? '#dc2626' : '#2563eb';
@@ -1020,7 +1344,7 @@
         }
 
         // Initialize jVectorMap
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Create initial colors
             const initialColors = {};
             activeStates.forEach(state => {
@@ -1059,19 +1383,19 @@
                         attribute: 'fill'
                     }]
                 },
-                onRegionClick: function(e, code) {
+                onRegionClick: function (e, code) {
                     if (activeStates.includes(code)) {
                         selectState(code);
                     }
                 },
-                onRegionTipShow: function(e, tip, code) {
+                onRegionTipShow: function (e, tip, code) {
                     if (activeStates.includes(code)) {
                         const stateNames = {
-                            'US-OH': 'Ohio - HQ Operativo',
+                            'US-OH': 'Ohio - Cincinnati, Dayton, Columbus, Youngstown, Plain City.',
                             'US-FL': 'Florida - HQ Legal',
-                            'US-KY': 'Kentucky',
-                            'US-IN': 'Indiana',
-                            'US-TN': 'Tennessee'
+                            'US-KY': 'Kentucky - Louisville, Lexington, Florence, Hebron, Union.',
+                            'US-IN': 'Indiana - Indianapolis, Lawrenceburg, Batesville.',
+                            'US-TN': 'Tennessee - Nashville, Knoxville.'
                         };
                         tip.html(stateNames[code] || tip.html());
                     } else {
@@ -1105,11 +1429,12 @@
 
             // Initial state
             selectState('US-OH');
-            
+
             // Auto-detect and set language
             const detectedLang = detectLanguage();
             switchLanguage(detectedLang);
         });
     </script>
 </body>
+
 </html>
